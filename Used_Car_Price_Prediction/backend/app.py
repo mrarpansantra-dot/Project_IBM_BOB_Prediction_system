@@ -1233,6 +1233,6 @@ else:
         st.markdown(
             "<p style='color:#94a3b8;font-size:0.82rem;text-align:center;"
             "margin-top:2rem;padding-top:0.9rem;border-top:1px solid #e2e8f0;'>"
-            "&#x1F916; Made with IBM BOB &nbsp;&bull;&nbsp; Arpan Santra &nbsp;&bull;&nbsp; 2024</p>",
+            "&#x1F916; Made with IBM BOB &nbsp;&bull;&nbsp; Arpan Santra &nbsp;&bull;&nbsp; 2026</p>",
             unsafe_allow_html=True,
         )
