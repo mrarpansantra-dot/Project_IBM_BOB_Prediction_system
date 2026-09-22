@@ -7,7 +7,7 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-UI-7c3aed?style=for-the-badge&logo=streamlit&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-Random%20Forest-d97706?style=for-the-badge&logo=scikit-learn&logoColor=white)
 
-**Author:** Arpan Santra &nbsp;|&nbsp; **Project:** IBM BOB AI/ML Project &nbsp;|&nbsp; **Year:** 2024
+**Author:** Arpan Santra &nbsp;|&nbsp; **Project:** IBM BOB AI/ML Project &nbsp;|&nbsp; **Year:** 2026
 
 </div>
 
