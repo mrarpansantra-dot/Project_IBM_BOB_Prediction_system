@@ -1,0 +1,167 @@
+╔══════════════════════════════════════════════════════════════════════════╗
+║          USED CAR PRICE PREDICTION SYSTEM — HOW TO RUN                 ║
+║          Author  : Arpan Santra                                         ║
+║          Project : IBM BOB AI/ML Project                                ║
+║          Colour  : Blue #2563eb | Purple #7c3aed | Green #059669        ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+REQUIREMENTS
+────────────────────────────────────────────────────────────────────────────
+  • Python 3.10 or higher
+  • pip (comes with Python)
+  • A terminal / command prompt (PowerShell on Windows is fine)
+
+────────────────────────────────────────────────────────────────────────────
+ STEP 1 ──  Install All Dependencies
+────────────────────────────────────────────────────────────────────────────
+  Open a terminal, navigate to the project root, then run:
+
+      python -m pip install -r requirements.txt
+
+  Wait for all packages to finish installing.
+  Key packages: flask, streamlit, scikit-learn, pandas, numpy, matplotlib
+
+────────────────────────────────────────────────────────────────────────────
+ STEP 2 ──  Train the Machine Learning Model  (run ONCE only)
+────────────────────────────────────────────────────────────────────────────
+  Reads test-data.csv, trains Random Forest, saves to models/ folder.
+
+      cd Used_Car_Price_Prediction\backend
+      python train_model.py
+
+  Expected output:
+      Loading data ...
+        Dataset shape after preprocessing: (1221, 14)
+      Training RandomForest ...
+        MAE  : 0.7717 Lakh
+        RMSE : 1.6014 Lakh
+        R2   : 0.7800
+        CV R2 (5-fold): 0.7164 +/- 0.1022
+      Model saved -> ../models/used_car_rf_model.pkl
+      Metadata saved -> models/model_meta.pkl
+
+  NOTE: You only need to run train_model.py ONCE.
+        After the models/ folder has the .pkl files, skip to Step 3.
+
+────────────────────────────────────────────────────────────────────────────
+ STEP 3 ──  Start the Flask Backend API          [TERMINAL 1 — keep open]
+────────────────────────────────────────────────────────────────────────────
+  Keep this terminal open the entire time the app is running.
+
+      cd Used_Car_Price_Prediction\backend
+      python app.py
+
+  You should see:
+      Loading model ...
+        Model loaded OK
+      Starting Flask server on http://127.0.0.1:5000 ...
+
+  The Flask API is now running at:
+      http://127.0.0.1:5000
+
+  Available endpoints:
+      GET  /api/health          ─  Liveness check
+      GET  /api/model-info      ─  Metrics + option lists
+      GET  /api/dataset-info    ─  Dataset statistics
+      POST /api/predict         ─  Single car prediction
+      POST /api/batch-predict   ─  Batch predictions
+
+────────────────────────────────────────────────────────────────────────────
+ STEP 4 ──  Launch the Streamlit Frontend UI     [TERMINAL 2 — new window]
+────────────────────────────────────────────────────────────────────────────
+  Open a NEW terminal window (do NOT close Terminal 1).
+
+      cd Used_Car_Price_Prediction\backend
+      python -m streamlit run app.py
+
+  The browser opens automatically at:
+      http://localhost:8501
+
+  If not, open your browser manually and go to:  http://localhost:8501
+
+────────────────────────────────────────────────────────────────────────────
+ STEP 5 ──  Using the Streamlit Web App
+────────────────────────────────────────────────────────────────────────────
+  The app has 4 tabs:
+
+  ┌────────────────────────────────────────────────────────────────┐
+  │  🎯 Prediction      ─  Enter car details → get predicted price  │
+  │  📊 Model Metrics   ─  R², MAE, RMSE, CV-R² charts             │
+  │  🗂 Dataset Overview ─  Fuel, location, transmission charts     │
+  │  ℹ  About           ─  Architecture, API docs, run guide        │
+  └────────────────────────────────────────────────────────────────┘
+
+  To predict a price:
+    1. Fill in the LEFT SIDEBAR:
+         Car Brand      Location       Manufacturing Year
+         KM Driven      Fuel Type      Transmission
+         Owner Type     Mileage        Engine (CC)
+         Power (bhp)    Seats
+    2. Click the blue "Predict Price" button.
+    3. The predicted price appears with a confidence range and chart.
+
+────────────────────────────────────────────────────────────────────────────
+ STEP 6 ──  Open the Jupyter Notebook  (Optional — for ML walkthrough)
+────────────────────────────────────────────────────────────────────────────
+      jupyter notebook ArpanSantra_UsedCarPricePrediction.ipynb
+
+  The notebook contains 41 cells covering:
+    EDA → Preprocessing → Model Training → Evaluation → Predictions
+
+────────────────────────────────────────────────────────────────────────────
+ STOPPING THE APP
+────────────────────────────────────────────────────────────────────────────
+  Terminal 1 (Flask)     →  Press  Ctrl + C
+  Terminal 2 (Streamlit) →  Press  Ctrl + C
+
+────────────────────────────────────────────────────────────────────────────
+ QUICK API TEST  (optional — while Flask is running in Terminal 1)
+────────────────────────────────────────────────────────────────────────────
+  Open a third terminal and run:
+
+      curl -X GET http://127.0.0.1:5000/api/health
+
+  Expected:
+      {"message":"Used Car Price Prediction API is running",
+       "model_loaded":true,"status":"ok"}
+
+  Single prediction test:
+
+      curl -X POST http://127.0.0.1:5000/api/predict ^
+           -H "Content-Type: application/json" ^
+           -d "{\"brand\":\"Maruti\",\"location\":\"Mumbai\",\"year\":2017,\"kilometers_driven\":40000,\"fuel_type\":\"Petrol\",\"transmission\":\"Manual\",\"owner_type\":\"First\",\"mileage\":\"20 kmpl\",\"engine\":\"1200 CC\",\"power\":\"82 bhp\",\"seats\":5}"
+
+────────────────────────────────────────────────────────────────────────────
+ FULL COMMAND SUMMARY
+────────────────────────────────────────────────────────────────────────────
+
+  # (1) Install (once)
+  python -m pip install -r requirements.txt
+
+  # (2) Train model (once)
+  cd Used_Car_Price_Prediction\backend
+  python train_model.py
+
+  # (3) Terminal 1 — Flask API
+  cd Used_Car_Price_Prediction\backend
+  python app.py
+
+  # (4) Terminal 2 — Streamlit UI
+  cd Used_Car_Price_Prediction\backend
+  python -m streamlit run app.py
+
+  # Browser
+  http://localhost:8501
+
+────────────────────────────────────────────────────────────────────────────
+ SUBMISSION FILES
+────────────────────────────────────────────────────────────────────────────
+  ArpanSantra_UsedCarPricePrediction.ipynb        Jupyter Notebook (41 cells)
+  requirements.txt                                 Python dependencies
+  ArpanSantra_UsedCarPricePredictionReport.docx    Project report (with screenshots)
+  README.md                                        Full project documentation
+  HOW_TO_RUN.txt                                   This file
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║   IBM BOB AI/ML Project  ·  Used Car Price Prediction  ·  Arpan Santra ║
+╚══════════════════════════════════════════════════════════════════════════╝

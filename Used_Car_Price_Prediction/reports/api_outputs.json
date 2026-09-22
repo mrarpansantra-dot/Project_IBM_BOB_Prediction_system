@@ -1,0 +1,241 @@
+{
+  "health": {
+    "message": "Used Car Price Prediction API is running",
+    "model_loaded": true,
+    "status": "ok"
+  },
+  "model_info": {
+    "features": [
+      "Brand",
+      "Location",
+      "Fuel_Type",
+      "Transmission",
+      "Owner_Type",
+      "Car_Age",
+      "Kilometers_Driven",
+      "Mileage",
+      "Engine",
+      "Power",
+      "Seats"
+    ],
+    "metrics": {
+      "CV_R2_mean": 0.7164,
+      "CV_R2_std": 0.1022,
+      "MAE_Lakh": 0.7717,
+      "R2_score": 0.78,
+      "RMSE_Lakh": 1.6014
+    },
+    "model_type": "RandomForestRegressor",
+    "options": {
+      "brands": [
+        "Audi",
+        "BMW",
+        "Bentley",
+        "Chevrolet",
+        "Datsun",
+        "Fiat",
+        "Ford",
+        "Hindustan",
+        "Honda",
+        "Hyundai",
+        "ISUZU",
+        "Isuzu",
+        "Jaguar",
+        "Jeep",
+        "Land",
+        "Mahindra",
+        "Maruti",
+        "Mercedes-Benz",
+        "Mini",
+        "Mitsubishi",
+        "Nissan",
+        "OpelCorsa",
+        "Porsche",
+        "Renault",
+        "Skoda",
+        "Tata",
+        "Toyota",
+        "Volkswagen",
+        "Volvo"
+      ],
+      "fuel_types": [
+        "CNG",
+        "Diesel",
+        "LPG",
+        "Petrol"
+      ],
+      "km_range": [
+        1000,
+        350000
+      ],
+      "locations": [
+        "Ahmedabad",
+        "Bangalore",
+        "Chennai",
+        "Coimbatore",
+        "Delhi",
+        "Hyderabad",
+        "Jaipur",
+        "Kochi",
+        "Kolkata",
+        "Mumbai",
+        "Pune"
+      ],
+      "owner_types": [
+        "First",
+        "Fourth & Above",
+        "Second",
+        "Third"
+      ],
+      "transmissions": [
+        "Automatic",
+        "Manual"
+      ],
+      "year_range": [
+        1996,
+        2019
+      ]
+    },
+    "test_rows": 245,
+    "total_rows": 1221,
+    "train_rows": 976
+  },
+  "dataset_info": {
+    "columns": [
+      "Name",
+      "Location",
+      "Year",
+      "Kilometers_Driven",
+      "Fuel_Type",
+      "Transmission",
+      "Owner_Type",
+      "Mileage",
+      "Engine",
+      "Power",
+      "Seats",
+      "New_Price"
+    ],
+    "fuel_type_dist": {
+      "CNG": 6,
+      "Diesel": 647,
+      "LPG": 2,
+      "Petrol": 579
+    },
+    "km_stats": {
+      "max": 350000,
+      "mean": 58507.0,
+      "min": 1000
+    },
+    "location_dist": {
+      "Ahmedabad": 51,
+      "Bangalore": 82,
+      "Chennai": 97,
+      "Coimbatore": 136,
+      "Delhi": 106,
+      "Hyderabad": 134,
+      "Jaipur": 86,
+      "Kochi": 121,
+      "Kolkata": 119,
+      "Mumbai": 159,
+      "Pune": 143
+    },
+    "null_counts": {
+      "Engine": 10,
+      "Fuel_Type": 0,
+      "Kilometers_Driven": 0,
+      "Location": 0,
+      "Mileage": 0,
+      "Name": 0,
+      "New_Price": 1052,
+      "Owner_Type": 0,
+      "Power": 10,
+      "Seats": 11,
+      "Transmission": 0,
+      "Year": 0
+    },
+    "owner_type_dist": {
+      "First": 1023,
+      "Fourth & Above": 3,
+      "Second": 184,
+      "Third": 24
+    },
+    "total_rows": 1234,
+    "transmission_dist": {
+      "Automatic": 329,
+      "Manual": 905
+    },
+    "year_stats": {
+      "max": 2019,
+      "mean": 2013.4,
+      "min": 1996
+    }
+  },
+  "predictions": [
+    {
+      "input_received": {
+        "brand": "Maruti",
+        "engine": "1200 CC",
+        "fuel_type": "Petrol",
+        "kilometers_driven": 40000,
+        "location": "Mumbai",
+        "mileage": "20 kmpl",
+        "owner_type": "First",
+        "power": "82 bhp",
+        "seats": 5,
+        "transmission": "Manual",
+        "year": 2017
+      },
+      "predicted_price": 1.9,
+      "price_range": {
+        "high": 2.09,
+        "low": 1.71
+      },
+      "status": "success",
+      "unit": "Lakh INR"
+    },
+    {
+      "input_received": {
+        "brand": "Toyota",
+        "engine": "2400 CC",
+        "fuel_type": "Diesel",
+        "kilometers_driven": 80000,
+        "location": "Delhi",
+        "mileage": "16 kmpl",
+        "owner_type": "Second",
+        "power": "148 bhp",
+        "seats": 7,
+        "transmission": "Automatic",
+        "year": 2015
+      },
+      "predicted_price": 6.57,
+      "price_range": {
+        "high": 7.23,
+        "low": 5.91
+      },
+      "status": "success",
+      "unit": "Lakh INR"
+    },
+    {
+      "input_received": {
+        "brand": "Hyundai",
+        "engine": "1000 CC",
+        "fuel_type": "Petrol",
+        "kilometers_driven": 15000,
+        "location": "Bangalore",
+        "mileage": "22 kmpl",
+        "owner_type": "First",
+        "power": "67 bhp",
+        "seats": 5,
+        "transmission": "Manual",
+        "year": 2019
+      },
+      "predicted_price": 3.1,
+      "price_range": {
+        "high": 3.41,
+        "low": 2.79
+      },
+      "status": "success",
+      "unit": "Lakh INR"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+# ============================================================
+#  requirements.txt
+#  Project : Used Car Price Prediction
+#  Author  : Arpan Santra
+#  IBM BOB AI/ML Project
+# ============================================================
+
+# Web framework & API
+flask==3.0.3
+flask-cors==4.0.1
+
+# Data processing
+pandas==2.2.2
+numpy==1.26.4
+
+# Machine Learning
+scikit-learn==1.5.1
+joblib==1.4.2
+
+# Frontend / UI
+streamlit==1.36.0
+
+# HTTP client (Streamlit -> Flask)
+requests==2.32.3
+
+# Visualisation
+matplotlib==3.9.1
+seaborn==0.13.2
+
+# Report generation
+python-docx==1.1.2
+Pillow==10.4.0
+
+# Notebook support
+ipykernel==6.29.5
+nbformat==5.10.4
